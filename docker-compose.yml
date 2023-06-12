@@ -11,10 +11,10 @@ services:
       - MYSQL_DATABASE=school_inventory
     volumes:
       - school_inventory:/var/lib/mysql
-      - ./tables/01_init.sql:/docker-entrypoint-initdb.d/init.sql
-      - ./triggers/03_triggers.sql:/docker-entrypoint-initdb.d/triggers.sql
-      - ./triggers/02_shadowTriggers.sql:/docker-entrypoint-initdb.d/shadowTriggers.sql
-      - ./store-procedures/04_store-procedures.sql:/docker-entrypoint-initdb.d/store-procedures.sql
-      - ./data/05_data.sql:/docker-entrypoint-initdb.d/data.sql
+      - ./tables/01_init.sql:/docker-entrypoint-initdb.d/01_init.sql
+      - ./triggers/03_triggers.sql:/docker-entrypoint-initdb.d/03_triggers.sql
+      - ./triggers/02_shadowTriggers.sql:/docker-entrypoint-initdb.d/02_shadowTriggers.sql
+      - ./store-procedures/04_store_procedures.sql:/docker-entrypoint-initdb.d/04_store_procedures.sql
+      - ./data/05_data.sql:/docker-entrypoint-initdb.d/05_data.sql
 volumes:
   school_inventory:
