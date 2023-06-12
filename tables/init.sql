@@ -49,7 +49,8 @@ CREATE TABLE Supply (
   SupplyID INT PRIMARY KEY,
   SupplyName VARCHAR(100),
   SupplyQuantity INT,
-  Description VARCHAR(200)
+  Description VARCHAR(200),
+  INDEX supply_quantity (SupplyQuantity)
 );
 
 CREATE TABLE ProviderSupply (
@@ -59,7 +60,8 @@ CREATE TABLE ProviderSupply (
   Quantity INT,
   PRIMARY KEY (ProviderID, SupplyID),
   FOREIGN KEY (ProviderID) REFERENCES Provider (ProviderID),
-  FOREIGN KEY (SupplyID) REFERENCES Supply (SupplyID)
+  FOREIGN KEY (SupplyID) REFERENCES Supply (SupplyID),
+  INDEX price_index (Price)
 );
 
 CREATE TABLE StudentSchool (
@@ -67,7 +69,8 @@ CREATE TABLE StudentSchool (
   SchoolID INT,
   PRIMARY KEY (StudentID, SchoolID),
   FOREIGN KEY (StudentID) REFERENCES Student (StudentID),
-  FOREIGN KEY (SchoolID) REFERENCES School (SchoolID)
+  FOREIGN KEY (SchoolID) REFERENCES School (SchoolID),
+  INDEX student_school (SchoolID, StudentID)
 );
 
 CREATE TABLE TeacherSchool (
@@ -75,7 +78,8 @@ CREATE TABLE TeacherSchool (
   SchoolID INT,
   PRIMARY KEY (TeacherID, SchoolID),
   FOREIGN KEY (TeacherID) REFERENCES Teacher (TeacherID),
-  FOREIGN KEY (SchoolID) REFERENCES School (SchoolID)
+  FOREIGN KEY (SchoolID) REFERENCES School (SchoolID),
+  INDEX teacher_school (SchoolID, TeacherID)
 );
 
 CREATE TABLE SupplyTransaction (
@@ -85,7 +89,8 @@ CREATE TABLE SupplyTransaction (
   TransactionDate DATE,
   Quantity INT,
   FOREIGN KEY (SchoolID) REFERENCES School (SchoolID),
-  FOREIGN KEY (SupplyID) REFERENCES Supply (SupplyID)
+  FOREIGN KEY (SupplyID) REFERENCES Supply (SupplyID),
+  INDEX transaction_date (TransactionDate)
 );
 
 CREATE TABLE TransactionStatus (
