@@ -16,5 +16,5 @@ services:
       - ./triggers/shadowTriggers.sql:/docker-entrypoint-initdb.d/shadowTriggers.sql
       - ./store-procedures/store-procedures.sql:/docker-entrypoint-initdb.d/store-procedures.sql
       - ./data/data.sql:/docker-entrypoint-initdb.d/data.sql
-    volumes:
-      school_inventory:
+  volumes:
+    school_inventory:
