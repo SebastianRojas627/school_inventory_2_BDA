@@ -10,9 +10,11 @@ services:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=school_inventory
     volumes:
+      - school_inventory:/var/lib/mysql
       - ./tables/init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./triggers/triggers.sql:/docker-entrypoint-initdb.d/triggers.sql
       - ./triggers/shadowTriggers.sql:/docker-entrypoint-initdb.d/shadowTriggers.sql
       - ./store-procedures/store-procedures.sql:/docker-entrypoint-initdb.d/store-procedures.sql
       - ./data/data.sql:/docker-entrypoint-initdb.d/data.sql
-      - mysqldata_master:/var/lib/mysql
+    volumes:
+      school_inventory:
