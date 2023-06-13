@@ -54,11 +54,11 @@ CREATE TABLE Supply (
 );
 
 CREATE TABLE ProviderSupply (
+  PurchaseID INT,
   ProviderID INT,
   SupplyID INT,
   Price DECIMAL(8,2),
   Quantity INT,
-  PRIMARY KEY (ProviderID, SupplyID),
   FOREIGN KEY (ProviderID) REFERENCES Provider (ProviderID),
   FOREIGN KEY (SupplyID) REFERENCES Supply (SupplyID),
   INDEX price_index (Price)

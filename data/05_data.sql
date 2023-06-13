@@ -69,13 +69,13 @@ VALUES
   (4, 'Erasers', 200, 'Pink rectangular erasers'),
   (5, 'Rulers', 30, '12-inch plastic rulers');
 
-INSERT INTO ProviderSupply (ProviderID, SupplyID, Price, Quantity)
+INSERT INTO ProviderSupply (PurchaseID, ProviderID, SupplyID, Price, Quantity)
 VALUES
-  (1, 1, 1.99, 500),
-  (2, 2, 2.99, 250),
-  (3, 3, 3.99, 100),
-  (4, 4, 0.99, 1000),
-  (5, 5, 1.49, 200);
+  (1, 1, 1, 1.99, 500),
+  (2, 2, 2, 2.99, 250),
+  (3, 3, 3, 3.99, 100),
+  (4, 4, 4, 0.99, 1000),
+  (5, 5, 5, 1.49, 200);
 
 INSERT INTO StudentSchool (StudentID, SchoolID)
 VALUES

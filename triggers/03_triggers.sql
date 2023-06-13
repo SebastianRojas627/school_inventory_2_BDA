@@ -82,3 +82,14 @@ BEGIN
     SET NEW.Grade = new_grade;
 END//
 DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER update_supply_bought
+AFTER INSERT ON ShadowProviderSupply
+FOR EACH ROW
+BEGIN
+    UPDATE Supply
+    SET SupplyQuantity = SupplyQuantity + NEW.Quantity
+    WHERE SupplyID = NEW.SupplyID;
+END//
+DELIMITER ;
