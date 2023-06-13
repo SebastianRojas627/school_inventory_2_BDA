@@ -47,7 +47,13 @@ Para la ejecucion y levantamiento de los contendores primero es necesario clonar
 git clone https://github.com/SebastianRojas627/school_inventory_2_BDA.git
 ```
 
-Una vez que los archivos hayan sido extraidos es necesario ejecutar el archivo de configuracion de docker compose
+Ingresar a la carpeta del repositorio clonado
+
+```bash
+cd /school_inventory_2_BDA
+```
+
+Ejecutar el archivo de configuracion de docker compose
 
 ```bash
 docker-compose up
