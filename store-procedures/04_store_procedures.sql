@@ -12,7 +12,8 @@ CREATE PROCEDURE CreateStudent(
 )
 BEGIN
 
-    INSERT INTO Person (Id, Name, LastName, Address, ContactNumber) VALUES (p_id, p_name, p_lastName, p_address, p_number);
+    INSERT INTO Person (Id, Name, LastName, Address, ContactNumber) 
+    VALUES (p_id, p_name, p_lastName, p_address, p_number);
     INSERT INTO Student (StudentId, Grade) VALUES (p_id, s_grade);
     COMMIT;
 END //
@@ -61,10 +62,10 @@ CREATE PROCEDURE UpdateGrades()
 BEGIN
     UPDATE Student SET Grade = CONCAT(CAST(LEFT(Grade, 1) + 1 AS CHAR), RIGHT(Grade, 1))
     WHERE LEFT(Grade, 1) BETWEEN '1' AND '5';
+
+    UPDATE Student SET Grade = 'LEFT' WHERE Grade = '6S';
     
     UPDATE Student SET Grade = '1S' WHERE Grade = '6P';
-    
-    UPDATE Student SET Grade = 'LEFT' WHERE Grade = '6S';
     
     SELECT 'Grades updated successfully.';
 END//
@@ -87,14 +88,3 @@ BEGIN
     WHERE Price > cost;
 END//
 DELIMITER ;
-
-select * from ProviderSupply;
-
-CALL GetSchoolsInRange(40.123, -74.567, 41.789, -73.123);
-CALL CreateStudent(30, 'prueba', 'prueba', 'La Paz', '1234567', '2 s');
-CALL CreateTeacher(21, 'teacher', 'teacher', 'Cochabamba', '7654321', 'Methematics');
-SET SQL_SAFE_UPDATES = 0;
-CALL UpdateGrades();
-SET SQL_SAFE_UPDATES = 1;
-CALL LowQuantitySupplies(10);
-CALL ResupplyCost(1000);

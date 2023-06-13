@@ -25,7 +25,6 @@ END//
 DELIMITER ;
 
 DELIMITER //
-
 CREATE TRIGGER modify_suppy_amount
 AFTER INSERT ON SupplyTransaction
 FOR EACH ROW
@@ -34,37 +33,32 @@ BEGIN
     SET SupplyQuantity = SupplyQuantity - NEW.Quantity
     WHERE SupplyID = NEW.SupplyID;
 END//
-
 DELIMITER ;
 
 DELIMITER //
-
 CREATE TRIGGER format_phone_number
 BEFORE INSERT ON Provider
 FOR EACH ROW
 BEGIN
     SET NEW.ContactNumber = CONCAT(
-        SUBSTRING(NEW.ContactNumber, 1, 4),
+        SUBSTRING(NEW.ContactNumber, 1, 3),
         '-',
-        SUBSTRING(NEW.ContactNumber, 3)
+        SUBSTRING(NEW.ContactNumber, 4)
     );
 END//
-
 DELIMITER ;
 
 DELIMITER //
-
 CREATE TRIGGER format_phone_number_person
 BEFORE INSERT ON Person
 FOR EACH ROW
 BEGIN
     SET NEW.ContactNumber = CONCAT(
-        SUBSTRING(NEW.ContactNumber, 1, 4),
+        SUBSTRING(NEW.ContactNumber, 1, 3),
         '-',
-        SUBSTRING(NEW.ContactNumber, 3)
+        SUBSTRING(NEW.ContactNumber, 4)
     );
 END//
-
 DELIMITER ;
 
 DELIMITER //
